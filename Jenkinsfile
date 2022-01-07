@@ -25,7 +25,7 @@ pipeline {
             agent any
             when {
                 beforeAgent true
-                branch 'test/default-value'
+                branch 'main'
             }
             steps {
                 sh 'echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin'
@@ -39,6 +39,6 @@ pipeline {
 
 def getCommitHash() {
     node {
-        return sh(script: 'git rev-parse --short HEAD || echo firstVersion', returnStdout: true)
+        return sh(script: 'git rev-parse --short HEAD || echo latest', returnStdout: true)
     }
 }
