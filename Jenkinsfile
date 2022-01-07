@@ -25,6 +25,7 @@ pipeline {
             agent any
             when {
                 beforeAgent true
+                branch 'test/default-value'
             }
             steps {
                 sh 'echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin'
